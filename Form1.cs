@@ -7,33 +7,34 @@ using System.Data;
 
 namespace Calculator
 {
-		public class Calc : System.Windows.Forms.Form
+	public class Calc : System.Windows.Forms.Form
 	{
-		private System.Windows.Forms.TextBox txtOutput;
+		private System.Windows.Forms.TextBox txt_Output;
 		private System.Windows.Forms.Button btn_sbros;
-		private System.Windows.Forms.Button btnChangesign;
-		private System.Windows.Forms.Button btnpoint;
+		private System.Windows.Forms.Button btn_Changesign;
+		private System.Windows.Forms.Button btn_point;
 		private System.Windows.Forms.Button btn_ravno;
 		private System.Windows.Forms.Button btn_delenie;
 		private System.Windows.Forms.Button btn_umnojenie;
 		private System.Windows.Forms.Button btn_plus;
 		private System.Windows.Forms.Button btn_minus;
-		private System.Windows.Forms.Button btn0;
-		private System.Windows.Forms.Button btn9;
-		private System.Windows.Forms.Button btn8;
-		private System.Windows.Forms.Button btn7;
-		private System.Windows.Forms.Button btn6;
-		private System.Windows.Forms.Button btn5;
-		private System.Windows.Forms.Button btn4;
-		private System.Windows.Forms.Button btn3;
-		private System.Windows.Forms.Button btn2;
-		private System.Windows.Forms.Button btn1;
-		private System.ComponentModel.Container components = null;
-		/// <summary>
-		/// Объявляем и инициализируем переменные, которые будут
-		///  возникать на экране при нажатии соответствующих кнопок.
-		/// </summary>
-		private const string odin = "1";
+		private System.Windows.Forms.Button btn_0;
+		private System.Windows.Forms.Button btn_9;
+		private System.Windows.Forms.Button btn_8;
+		private System.Windows.Forms.Button btn_7;
+		private System.Windows.Forms.Button btn_6;
+		private System.Windows.Forms.Button btn_5;
+		private System.Windows.Forms.Button btn_4;
+		private System.Windows.Forms.Button btn_3;
+		private System.Windows.Forms.Button btn_2;
+		private System.Windows.Forms.Button btn_1;
+        private IContainer components;
+
+        /// <summary>
+        /// Объявляем и инициализируем переменные, которые будут
+        ///  возникать на экране при нажатии соответствующих кнопок.
+        /// </summary>
+        private const string odin = "1";
 		private const string dva = "2";
 		private const string tri = "3";
 		private const string chetire = "4";
@@ -42,13 +43,24 @@ namespace Calculator
 		private const string sem = "7";
 		private const string vosem = "8";
 		private const string devyat = "9";
-		private const string nul = "0";
+        private Button btn_Stepen;
+        private Button btn_Koren;
+        private Button btn_Obratnoe;
+        private Button btn_Close;
+        private MenuStrip menuCalc;
+        private ToolStripMenuItem viewMenuItem1;
+        private ToolStripMenuItem enginMenuItem2;
+        private ToolStripMenuItem lightMenuItem3;
+        private ToolStripMenuItem quesMenuItem4;
+        private Button btn_Kvadrat;
+        public ToolTip toolTip1;
+        private const string nul = "0";
 
 		public Calc()
 		{
 			InitializeComponent();
 			// При запуске приложения на экране будет нуль
-			txtOutput.Text = "0";
+			txt_Output.Text = "0";
 		
 		}
 
@@ -74,73 +86,92 @@ namespace Calculator
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
-            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.txt_Output = new System.Windows.Forms.TextBox();
             this.btn_sbros = new System.Windows.Forms.Button();
-            this.btnChangesign = new System.Windows.Forms.Button();
-            this.btnpoint = new System.Windows.Forms.Button();
+            this.btn_Changesign = new System.Windows.Forms.Button();
+            this.btn_point = new System.Windows.Forms.Button();
             this.btn_ravno = new System.Windows.Forms.Button();
             this.btn_delenie = new System.Windows.Forms.Button();
             this.btn_umnojenie = new System.Windows.Forms.Button();
             this.btn_plus = new System.Windows.Forms.Button();
             this.btn_minus = new System.Windows.Forms.Button();
-            this.btn0 = new System.Windows.Forms.Button();
-            this.btn9 = new System.Windows.Forms.Button();
-            this.btn8 = new System.Windows.Forms.Button();
-            this.btn7 = new System.Windows.Forms.Button();
-            this.btn6 = new System.Windows.Forms.Button();
-            this.btn5 = new System.Windows.Forms.Button();
-            this.btn4 = new System.Windows.Forms.Button();
-            this.btn3 = new System.Windows.Forms.Button();
-            this.btn2 = new System.Windows.Forms.Button();
-            this.btn1 = new System.Windows.Forms.Button();
+            this.btn_0 = new System.Windows.Forms.Button();
+            this.btn_9 = new System.Windows.Forms.Button();
+            this.btn_8 = new System.Windows.Forms.Button();
+            this.btn_7 = new System.Windows.Forms.Button();
+            this.btn_6 = new System.Windows.Forms.Button();
+            this.btn_5 = new System.Windows.Forms.Button();
+            this.btn_4 = new System.Windows.Forms.Button();
+            this.btn_3 = new System.Windows.Forms.Button();
+            this.btn_2 = new System.Windows.Forms.Button();
+            this.btn_1 = new System.Windows.Forms.Button();
+            this.btn_Stepen = new System.Windows.Forms.Button();
+            this.btn_Koren = new System.Windows.Forms.Button();
+            this.btn_Obratnoe = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
+            this.menuCalc = new System.Windows.Forms.MenuStrip();
+            this.viewMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.enginMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.quesMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_Kvadrat = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.menuCalc.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtOutput
+            // txt_Output
             // 
-            this.txtOutput.AccessibleName = "Display";
-            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtOutput.Location = new System.Drawing.Point(12, 28);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(300, 30);
-            this.txtOutput.TabIndex = 60;
-            this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Output.AccessibleName = "Display";
+            this.txt_Output.BackColor = System.Drawing.SystemColors.Info;
+            this.txt_Output.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txt_Output.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_Output.ForeColor = System.Drawing.Color.Purple;
+            this.txt_Output.Location = new System.Drawing.Point(12, 47);
+            this.txt_Output.Name = "txt_Output";
+            this.txt_Output.ReadOnly = true;
+            this.txt_Output.Size = new System.Drawing.Size(300, 30);
+            this.txt_Output.TabIndex = 60;
+            this.txt_Output.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt_Output.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
             // 
             // btn_sbros
             // 
             this.btn_sbros.AccessibleName = "reset";
-            this.btn_sbros.Location = new System.Drawing.Point(245, 83);
+            this.btn_sbros.Location = new System.Drawing.Point(268, 83);
             this.btn_sbros.Name = "btn_sbros";
             this.btn_sbros.Size = new System.Drawing.Size(48, 92);
             this.btn_sbros.TabIndex = 0;
             this.btn_sbros.Text = "C";
             this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click);
             // 
-            // btnChangesign
+            // btn_Changesign
             // 
-            this.btnChangesign.AccessibleName = "change sign";
-            this.btnChangesign.Location = new System.Drawing.Point(82, 222);
-            this.btnChangesign.Name = "btnChangesign";
-            this.btnChangesign.Size = new System.Drawing.Size(48, 46);
-            this.btnChangesign.TabIndex = 58;
-            this.btnChangesign.Text = "+/-";
-            this.btnChangesign.Click += new System.EventHandler(this.btnChangesign_Click);
+            this.btn_Changesign.AccessibleName = "change sign";
+            this.btn_Changesign.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Changesign.Location = new System.Drawing.Point(118, 222);
+            this.btn_Changesign.Name = "btn_Changesign";
+            this.btn_Changesign.Size = new System.Drawing.Size(48, 46);
+            this.btn_Changesign.TabIndex = 58;
+            this.btn_Changesign.Text = "+/-";
+            this.btn_Changesign.Click += new System.EventHandler(this.btnChangesign_Click);
             // 
-            // btnpoint
+            // btn_point
             // 
-            this.btnpoint.AccessibleName = "point ";
-            this.btnpoint.Location = new System.Drawing.Point(130, 222);
-            this.btnpoint.Name = "btnpoint";
-            this.btnpoint.Size = new System.Drawing.Size(48, 46);
-            this.btnpoint.TabIndex = 57;
-            this.btnpoint.Text = ",";
-            this.btnpoint.Click += new System.EventHandler(this.btnpoint_Click);
+            this.btn_point.AccessibleName = "point ";
+            this.btn_point.Location = new System.Drawing.Point(166, 222);
+            this.btn_point.Name = "btn_point";
+            this.btn_point.Size = new System.Drawing.Size(48, 46);
+            this.btn_point.TabIndex = 57;
+            this.btn_point.Text = ",";
+            this.btn_point.Click += new System.EventHandler(this.btnpoint_Click);
             // 
             // btn_ravno
             // 
             this.btn_ravno.AccessibleDescription = "ravno";
             this.btn_ravno.AccessibleName = "equal";
-            this.btn_ravno.Location = new System.Drawing.Point(245, 175);
+            this.btn_ravno.Location = new System.Drawing.Point(268, 175);
             this.btn_ravno.Name = "btn_ravno";
             this.btn_ravno.Size = new System.Drawing.Size(48, 93);
             this.btn_ravno.TabIndex = 56;
@@ -150,7 +181,7 @@ namespace Calculator
             // btn_delenie
             // 
             this.btn_delenie.AccessibleName = "divide ";
-            this.btn_delenie.Location = new System.Drawing.Point(197, 83);
+            this.btn_delenie.Location = new System.Drawing.Point(220, 83);
             this.btn_delenie.Name = "btn_delenie";
             this.btn_delenie.Size = new System.Drawing.Size(48, 46);
             this.btn_delenie.TabIndex = 55;
@@ -160,7 +191,7 @@ namespace Calculator
             // btn_umnojenie
             // 
             this.btn_umnojenie.AccessibleName = "multiply ";
-            this.btn_umnojenie.Location = new System.Drawing.Point(197, 129);
+            this.btn_umnojenie.Location = new System.Drawing.Point(220, 129);
             this.btn_umnojenie.Name = "btn_umnojenie";
             this.btn_umnojenie.Size = new System.Drawing.Size(48, 46);
             this.btn_umnojenie.TabIndex = 54;
@@ -170,7 +201,7 @@ namespace Calculator
             // btn_plus
             // 
             this.btn_plus.AccessibleName = "plus ";
-            this.btn_plus.Location = new System.Drawing.Point(197, 222);
+            this.btn_plus.Location = new System.Drawing.Point(220, 222);
             this.btn_plus.Name = "btn_plus";
             this.btn_plus.Size = new System.Drawing.Size(48, 46);
             this.btn_plus.TabIndex = 53;
@@ -180,141 +211,273 @@ namespace Calculator
             // btn_minus
             // 
             this.btn_minus.AccessibleName = "minus ";
-            this.btn_minus.Location = new System.Drawing.Point(197, 175);
+            this.btn_minus.Location = new System.Drawing.Point(220, 175);
             this.btn_minus.Name = "btn_minus";
             this.btn_minus.Size = new System.Drawing.Size(48, 47);
             this.btn_minus.TabIndex = 52;
             this.btn_minus.Text = "-";
             this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
             // 
-            // btn0
+            // btn_0
             // 
-            this.btn0.AccessibleName = "zero";
-            this.btn0.Location = new System.Drawing.Point(34, 222);
-            this.btn0.Name = "btn0";
-            this.btn0.Size = new System.Drawing.Size(48, 46);
-            this.btn0.TabIndex = 51;
-            this.btn0.Text = "0";
-            this.btn0.Click += new System.EventHandler(this.btn0_Click);
+            this.btn_0.AccessibleName = "zero";
+            this.btn_0.Location = new System.Drawing.Point(70, 222);
+            this.btn_0.Name = "btn_0";
+            this.btn_0.Size = new System.Drawing.Size(48, 46);
+            this.btn_0.TabIndex = 51;
+            this.btn_0.Text = "0";
+            this.btn_0.Click += new System.EventHandler(this.btn0_Click);
             // 
-            // btn9
+            // btn_9
             // 
-            this.btn9.AccessibleName = "nine ";
-            this.btn9.Location = new System.Drawing.Point(130, 83);
-            this.btn9.Name = "btn9";
-            this.btn9.Size = new System.Drawing.Size(48, 46);
-            this.btn9.TabIndex = 50;
-            this.btn9.Text = "9";
-            this.btn9.Click += new System.EventHandler(this.btn9_Click);
+            this.btn_9.AccessibleName = "nine ";
+            this.btn_9.Location = new System.Drawing.Point(166, 83);
+            this.btn_9.Name = "btn_9";
+            this.btn_9.Size = new System.Drawing.Size(48, 46);
+            this.btn_9.TabIndex = 50;
+            this.btn_9.Text = "9";
+            this.btn_9.Click += new System.EventHandler(this.btn9_Click);
             // 
-            // btn8
+            // btn_8
             // 
-            this.btn8.AccessibleName = "eight ";
-            this.btn8.Location = new System.Drawing.Point(82, 83);
-            this.btn8.Name = "btn8";
-            this.btn8.Size = new System.Drawing.Size(48, 46);
-            this.btn8.TabIndex = 49;
-            this.btn8.Text = "8";
-            this.btn8.Click += new System.EventHandler(this.btn8_Click);
+            this.btn_8.AccessibleName = "eight ";
+            this.btn_8.Location = new System.Drawing.Point(118, 83);
+            this.btn_8.Name = "btn_8";
+            this.btn_8.Size = new System.Drawing.Size(48, 46);
+            this.btn_8.TabIndex = 49;
+            this.btn_8.Text = "8";
+            this.btn_8.Click += new System.EventHandler(this.btn8_Click);
             // 
-            // btn7
+            // btn_7
             // 
-            this.btn7.AccessibleName = "seven ";
-            this.btn7.Location = new System.Drawing.Point(34, 83);
-            this.btn7.Name = "btn7";
-            this.btn7.Size = new System.Drawing.Size(48, 46);
-            this.btn7.TabIndex = 48;
-            this.btn7.Text = "7";
-            this.btn7.Click += new System.EventHandler(this.btn7_Click);
+            this.btn_7.AccessibleName = "seven ";
+            this.btn_7.Location = new System.Drawing.Point(70, 83);
+            this.btn_7.Name = "btn_7";
+            this.btn_7.Size = new System.Drawing.Size(48, 46);
+            this.btn_7.TabIndex = 48;
+            this.btn_7.Text = "7";
+            this.btn_7.Click += new System.EventHandler(this.btn7_Click);
             // 
-            // btn6
+            // btn_6
             // 
-            this.btn6.AccessibleName = "six ";
-            this.btn6.Location = new System.Drawing.Point(130, 129);
-            this.btn6.Name = "btn6";
-            this.btn6.Size = new System.Drawing.Size(48, 46);
-            this.btn6.TabIndex = 47;
-            this.btn6.Text = "6";
-            this.btn6.Click += new System.EventHandler(this.btn6_Click);
+            this.btn_6.AccessibleName = "six ";
+            this.btn_6.Location = new System.Drawing.Point(166, 129);
+            this.btn_6.Name = "btn_6";
+            this.btn_6.Size = new System.Drawing.Size(48, 46);
+            this.btn_6.TabIndex = 47;
+            this.btn_6.Text = "6";
+            this.btn_6.Click += new System.EventHandler(this.btn6_Click);
             // 
-            // btn5
+            // btn_5
             // 
-            this.btn5.AccessibleName = "five ";
-            this.btn5.Location = new System.Drawing.Point(82, 129);
-            this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(48, 46);
-            this.btn5.TabIndex = 46;
-            this.btn5.Text = "5";
-            this.btn5.Click += new System.EventHandler(this.btn5_Click);
+            this.btn_5.AccessibleName = "five ";
+            this.btn_5.Location = new System.Drawing.Point(118, 129);
+            this.btn_5.Name = "btn_5";
+            this.btn_5.Size = new System.Drawing.Size(48, 46);
+            this.btn_5.TabIndex = 46;
+            this.btn_5.Text = "5";
+            this.btn_5.Click += new System.EventHandler(this.btn5_Click);
             // 
-            // btn4
+            // btn_4
             // 
-            this.btn4.AccessibleName = "four ";
-            this.btn4.Location = new System.Drawing.Point(34, 129);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(48, 46);
-            this.btn4.TabIndex = 45;
-            this.btn4.Text = "4";
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn_4.AccessibleName = "four ";
+            this.btn_4.Location = new System.Drawing.Point(70, 129);
+            this.btn_4.Name = "btn_4";
+            this.btn_4.Size = new System.Drawing.Size(48, 46);
+            this.btn_4.TabIndex = 45;
+            this.btn_4.Text = "4";
+            this.btn_4.Click += new System.EventHandler(this.btn4_Click);
             // 
-            // btn3
+            // btn_3
             // 
-            this.btn3.AccessibleName = "three ";
-            this.btn3.Location = new System.Drawing.Point(130, 175);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(48, 47);
-            this.btn3.TabIndex = 44;
-            this.btn3.Text = "3";
-            this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            this.btn_3.AccessibleName = "three ";
+            this.btn_3.Location = new System.Drawing.Point(166, 175);
+            this.btn_3.Name = "btn_3";
+            this.btn_3.Size = new System.Drawing.Size(48, 47);
+            this.btn_3.TabIndex = 44;
+            this.btn_3.Text = "3";
+            this.btn_3.Click += new System.EventHandler(this.btn3_Click);
             // 
-            // btn2
+            // btn_2
             // 
-            this.btn2.AccessibleName = "two ";
-            this.btn2.Location = new System.Drawing.Point(82, 175);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(48, 47);
-            this.btn2.TabIndex = 43;
-            this.btn2.Text = "2";
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            this.btn_2.AccessibleName = "two ";
+            this.btn_2.Location = new System.Drawing.Point(118, 175);
+            this.btn_2.Name = "btn_2";
+            this.btn_2.Size = new System.Drawing.Size(48, 47);
+            this.btn_2.TabIndex = 43;
+            this.btn_2.Text = "2";
+            this.btn_2.Click += new System.EventHandler(this.btn2_Click);
             // 
-            // btn1
+            // btn_1
             // 
-            this.btn1.AccessibleName = "one ";
-            this.btn1.Location = new System.Drawing.Point(34, 175);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(48, 47);
-            this.btn1.TabIndex = 42;
-            this.btn1.Text = "1";
-            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn_1.AccessibleName = "one ";
+            this.btn_1.Location = new System.Drawing.Point(70, 175);
+            this.btn_1.Name = "btn_1";
+            this.btn_1.Size = new System.Drawing.Size(48, 47);
+            this.btn_1.TabIndex = 42;
+            this.btn_1.Text = "1";
+            this.btn_1.Click += new System.EventHandler(this.btn1_Click);
+            // 
+            // btn_Stepen
+            // 
+            this.btn_Stepen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_Stepen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
+            this.btn_Stepen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Stepen.ForeColor = System.Drawing.Color.Teal;
+            this.btn_Stepen.Location = new System.Drawing.Point(12, 83);
+            this.btn_Stepen.Name = "btn_Stepen";
+            this.btn_Stepen.Size = new System.Drawing.Size(52, 46);
+            this.btn_Stepen.TabIndex = 61;
+            this.btn_Stepen.Text = "2^n";
+            this.btn_Stepen.UseVisualStyleBackColor = false;
+            this.btn_Stepen.Click += new System.EventHandler(this.Stepen_Click);
+            // 
+            // btn_Koren
+            // 
+            this.btn_Koren.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_Koren.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
+            this.btn_Koren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Koren.ForeColor = System.Drawing.Color.Teal;
+            this.btn_Koren.Location = new System.Drawing.Point(12, 129);
+            this.btn_Koren.Name = "btn_Koren";
+            this.btn_Koren.Size = new System.Drawing.Size(52, 46);
+            this.btn_Koren.TabIndex = 62;
+            this.btn_Koren.Text = "V";
+            this.btn_Koren.UseVisualStyleBackColor = false;
+            this.btn_Koren.Click += new System.EventHandler(this.Koren_Click);
+            // 
+            // btn_Obratnoe
+            // 
+            this.btn_Obratnoe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_Obratnoe.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
+            this.btn_Obratnoe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Obratnoe.ForeColor = System.Drawing.Color.Teal;
+            this.btn_Obratnoe.Location = new System.Drawing.Point(12, 175);
+            this.btn_Obratnoe.Name = "btn_Obratnoe";
+            this.btn_Obratnoe.Size = new System.Drawing.Size(52, 47);
+            this.btn_Obratnoe.TabIndex = 63;
+            this.btn_Obratnoe.Text = "1/x";
+            this.btn_Obratnoe.UseVisualStyleBackColor = false;
+            this.btn_Obratnoe.Click += new System.EventHandler(this.Obratnoe_Click);
+            // 
+            // btn_Close
+            // 
+            this.btn_Close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btn_Close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gold;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Close.ForeColor = System.Drawing.Color.Green;
+            this.btn_Close.Location = new System.Drawing.Point(57, 278);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(259, 31);
+            this.btn_Close.TabIndex = 64;
+            this.btn_Close.Text = "Закрыть калькулятор";
+            this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // menuCalc
+            // 
+            this.menuCalc.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuCalc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewMenuItem1,
+            this.quesMenuItem4});
+            this.menuCalc.Location = new System.Drawing.Point(0, 0);
+            this.menuCalc.Name = "menuCalc";
+            this.menuCalc.Size = new System.Drawing.Size(330, 28);
+            this.menuCalc.TabIndex = 65;
+            this.menuCalc.Text = "menuStrip1";
+            // 
+            // viewMenuItem1
+            // 
+            this.viewMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enginMenuItem2,
+            this.lightMenuItem3});
+            this.viewMenuItem1.Name = "viewMenuItem1";
+            this.viewMenuItem1.Size = new System.Drawing.Size(49, 24);
+            this.viewMenuItem1.Text = "Вид";
+            // 
+            // enginMenuItem2
+            // 
+            this.enginMenuItem2.Name = "enginMenuItem2";
+            this.enginMenuItem2.Size = new System.Drawing.Size(186, 26);
+            this.enginMenuItem2.Text = "Инженерный";
+            // 
+            // lightMenuItem3
+            // 
+            this.lightMenuItem3.Name = "lightMenuItem3";
+            this.lightMenuItem3.Size = new System.Drawing.Size(186, 26);
+            this.lightMenuItem3.Text = "Стандартный";
+            // 
+            // quesMenuItem4
+            // 
+            this.quesMenuItem4.Name = "quesMenuItem4";
+            this.quesMenuItem4.Size = new System.Drawing.Size(81, 24);
+            this.quesMenuItem4.Text = "Справка";
+            // 
+            // btn_Kvadrat
+            // 
+            this.btn_Kvadrat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_Kvadrat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Yellow;
+            this.btn_Kvadrat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Kvadrat.ForeColor = System.Drawing.Color.Teal;
+            this.btn_Kvadrat.Location = new System.Drawing.Point(12, 225);
+            this.btn_Kvadrat.Name = "btn_Kvadrat";
+            this.btn_Kvadrat.Size = new System.Drawing.Size(52, 47);
+            this.btn_Kvadrat.TabIndex = 66;
+            this.btn_Kvadrat.Text = "n^2";
+            this.btn_Kvadrat.UseVisualStyleBackColor = false;
+            this.btn_Kvadrat.Click += new System.EventHandler(this.Kvadrat_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.Tag = "Stepen";
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Stepen";
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Calc
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(327, 324);
-            this.Controls.Add(this.txtOutput);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(330, 321);
+            this.Controls.Add(this.btn_Kvadrat);
+            this.Controls.Add(this.btn_Close);
+            this.Controls.Add(this.btn_Obratnoe);
+            this.Controls.Add(this.btn_Koren);
+            this.Controls.Add(this.btn_Stepen);
+            this.Controls.Add(this.txt_Output);
             this.Controls.Add(this.btn_sbros);
-            this.Controls.Add(this.btnChangesign);
-            this.Controls.Add(this.btnpoint);
+            this.Controls.Add(this.btn_Changesign);
+            this.Controls.Add(this.btn_point);
             this.Controls.Add(this.btn_ravno);
             this.Controls.Add(this.btn_delenie);
             this.Controls.Add(this.btn_umnojenie);
             this.Controls.Add(this.btn_plus);
             this.Controls.Add(this.btn_minus);
-            this.Controls.Add(this.btn0);
-            this.Controls.Add(this.btn9);
-            this.Controls.Add(this.btn8);
-            this.Controls.Add(this.btn7);
-            this.Controls.Add(this.btn6);
-            this.Controls.Add(this.btn5);
-            this.Controls.Add(this.btn4);
-            this.Controls.Add(this.btn3);
-            this.Controls.Add(this.btn2);
-            this.Controls.Add(this.btn1);
+            this.Controls.Add(this.btn_0);
+            this.Controls.Add(this.btn_9);
+            this.Controls.Add(this.btn_8);
+            this.Controls.Add(this.btn_7);
+            this.Controls.Add(this.btn_6);
+            this.Controls.Add(this.btn_5);
+            this.Controls.Add(this.btn_4);
+            this.Controls.Add(this.btn_3);
+            this.Controls.Add(this.btn_2);
+            this.Controls.Add(this.btn_1);
+            this.Controls.Add(this.menuCalc);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuCalc;
             this.MaximizeBox = false;
             this.Name = "Calc";
+            this.Opacity = 0.77D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Калькулятор 1.0";
+            this.TopMost = true;
+            this.menuCalc.ResumeLayout(false);
+            this.menuCalc.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,62 +500,62 @@ namespace Calculator
 
 			private void btn1_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (odin);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (odin);
 			}
 
 			private void btn2_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (dva);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (dva);
 			}
 
 			private void btn3_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (tri);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (tri);
 			}
 
 			private void btn4_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (chetire);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (chetire);
 			}
 
 			private void btn5_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (pyat);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (pyat);
 			}
 
 			private void btn6_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (shest);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (shest);
 			}
 
 			private void btn7_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (sem);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (sem);
 			}
 
 			private void btn8_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (vosem);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (vosem);
 			}
 
 			private void btn9_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (devyat);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (devyat);
 			}
 
 			private void btn0_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (nul);
+				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (nul);
 			}
 
 			private void btnChangesign_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakChisla();
+				txt_Output.Text = mehanizmcalkulyatora.ZnakChisla();
 			}
 
 			private void btnpoint_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakTochki();
+				txt_Output.Text = mehanizmcalkulyatora.ZnakTochki();
 			}
 			/// <summary>
 			/// Обработчики кнопок действия калькулятора передают 
@@ -421,17 +584,52 @@ namespace Calculator
 
 			private void btn_ravno_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakRavno();
+				txt_Output.Text = mehanizmcalkulyatora.ZnakRavno();
 				mehanizmcalkulyatora.Sbros();
 			}
 
 			private void btn_sbros_Click(object sender, System.EventArgs e)
 			{
 				mehanizmcalkulyatora.Sbros();
-				txtOutput.Text = "0";
+				txt_Output.Text = "0";
 			}
-	}
-	class mehanizmcalkulyatora
+
+        private void txtOutput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Obratnoe_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Obratnoe);
+        }
+
+        private void Kvadrat_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Kvadrat);
+        }
+
+        private void Koren_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Koren);
+        }
+
+        private void Stepen_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Stepen);
+        }
+
+        private void Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+    }
+    class mehanizmcalkulyatora
 	{
 	/// <summary>
 	///Создаем перечисление Deystvie, для определения одного из четырех действия калькулятора.
@@ -442,8 +640,12 @@ namespace Calculator
 			Slojenie = 1,
 			Vichitanie = 2,
 			Umnojenie = 3,
-			Delenie = 4
-		}
+			Delenie = 4,
+            Koren = 5,
+            Stepen = 6,
+            Obratnoe = 7,
+            Kvadrat = 8,
+        }
 
 	/// <summary>
 	/// Объявляем и инициализируем переменную, 
@@ -523,16 +725,50 @@ namespace Calculator
 			
 			}
 		}
+        ////public static string btn_Obratnoe()
+        ////{
+        ////    double pervoeChislo;
 
+        ////    if (resultatOutput != "")
+        ////    {
+        ////        pervoeChislo = System.Convert.ToDouble(resultatOutput);
+        ////        resultatOutput = System.Convert.ToString(1 / pervoeChislo);
+        ////    }
+        ////    return (resultatOutput);
 
+        ////}
 
-	/// <summary>
-	/// При нажатии  кнопки +/- число на экране - tekusheeChislo умножается на -1,
-	///  а затем результат снова присваивается переменной resultatOutput.
-	/// </summary>
-	
+        /// <summary>
+        /// При нажатии  кнопки +/- число на экране - tekusheeChislo умножается на -1,
+        ///  а затем результат снова присваивается переменной resultatOutput.
+        /// </summary>
 
-		public static string ZnakChisla ()
+        ////public static string btn_Kvadrat()
+        ////{
+        ////    double pervoeChislo;
+
+        ////    if (resultatOutput != "")
+        ////    {
+
+        ////        pervoeChislo = System.Convert.ToDouble(resultatOutput);
+        ////        resultatOutput = System.Convert.ToString(Math.Pow(pervoeChislo,2));
+        ////    }
+        ////    return (resultatOutput);
+
+        ////}
+        ////public static string btn_Koren()
+        ////{
+        ////    double tekusheeChislo;
+
+        ////    if (resultatOutput != "")
+        ////    {
+        ////        tekusheeChislo = System.Convert.ToDouble(resultatOutput);
+        ////        resultatOutput = System.Convert.ToString(Math.Sqrt(tekusheeChislo));
+        ////    }
+        ////    return (resultatOutput);
+        ////}
+
+            public static string ZnakChisla ()
 		{
 			double tekusheeChislo;
 
@@ -607,7 +843,27 @@ namespace Calculator
 						proverkaOshibok = true;
 						break;
 
-					default:
+                    case Deystvie.Stepen:
+                        resultatVichisleniy = Math.Pow(pervoeChislo, vtoroeChislo);
+                        proverkaOshibok=true;
+                        break;
+
+                    case Deystvie.Koren:
+                        resultatVichisleniy = Math.Sqrt(pervoeChislo);
+                        proverkaOshibok = true;
+                        break;
+
+                    case Deystvie.Obratnoe:
+                        resultatVichisleniy = 1 / pervoeChislo;
+                        proverkaOshibok = true;
+                        break;
+
+                    case Deystvie.Kvadrat:
+                        resultatVichisleniy = pervoeChislo * pervoeChislo;
+                        proverkaOshibok = true;
+                        break;
+
+                    default:
 						proverkaOshibok = false;
 						break;
 				}
@@ -633,5 +889,6 @@ namespace Calculator
 			ChislosTochkoy = false;
 			dobavlenierazryada = false;			
 		}
+
 	}
 }
