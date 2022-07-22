@@ -7,27 +7,32 @@ using System.Data;
 
 namespace Calculator
 {
-	public class Calc : System.Windows.Forms.Form
-	{
-		private System.Windows.Forms.TextBox txt_Output;
-		private System.Windows.Forms.Button btn_sbros;
-		private System.Windows.Forms.Button btn_Changesign;
-		private System.Windows.Forms.Button btn_point;
-		private System.Windows.Forms.Button btn_ravno;
-		private System.Windows.Forms.Button btn_delenie;
-		private System.Windows.Forms.Button btn_umnojenie;
-		private System.Windows.Forms.Button btn_plus;
-		private System.Windows.Forms.Button btn_minus;
-		private System.Windows.Forms.Button btn_0;
-		private System.Windows.Forms.Button btn_9;
-		private System.Windows.Forms.Button btn_8;
-		private System.Windows.Forms.Button btn_7;
-		private System.Windows.Forms.Button btn_6;
-		private System.Windows.Forms.Button btn_5;
-		private System.Windows.Forms.Button btn_4;
-		private System.Windows.Forms.Button btn_3;
-		private System.Windows.Forms.Button btn_2;
-		private System.Windows.Forms.Button btn_1;
+    public class Calc : System.Windows.Forms.Form
+    {
+        private System.Windows.Forms.TextBox txt_Output;
+        private System.Windows.Forms.Button btn_sbros;
+        private System.Windows.Forms.Button btn_Changesign;
+        private System.Windows.Forms.Button btn_point;
+        private System.Windows.Forms.Button btn_ravno;
+        private System.Windows.Forms.Button btn_delenie;
+        private System.Windows.Forms.Button btn_umnojenie;
+        private System.Windows.Forms.Button btn_plus;
+        private System.Windows.Forms.Button btn_minus;
+        private System.Windows.Forms.Button btn_0;
+        private System.Windows.Forms.Button btn_9;
+        private System.Windows.Forms.Button btn_8;
+        private System.Windows.Forms.Button btn_7;
+        private System.Windows.Forms.Button btn_6;
+        private System.Windows.Forms.Button btn_5;
+        private System.Windows.Forms.Button btn_4;
+        private System.Windows.Forms.Button btn_3;
+        private System.Windows.Forms.Button btn_2;
+        private System.Windows.Forms.Button btn_1;
+        private Button btn_Stepen;
+        private Button btn_Koren;
+        private Button btn_Obratnoe;
+        private Button btn_Kvadrat;
+        private Button btn_Close;
         private IContainer components;
 
         /// <summary>
@@ -35,57 +40,78 @@ namespace Calculator
         ///  возникать на экране при нажатии соответствующих кнопок.
         /// </summary>
         private const string odin = "1";
-		private const string dva = "2";
-		private const string tri = "3";
-		private const string chetire = "4";
-		private const string pyat = "5";
-		private const string shest = "6";
-		private const string sem = "7";
-		private const string vosem = "8";
-		private const string devyat = "9";
-        private Button btn_Stepen;
-        private Button btn_Koren;
-        private Button btn_Obratnoe;
-        private Button btn_Close;
+        private const string dva = "2";
+        private const string tri = "3";
+        private const string chetire = "4";
+        private const string pyat = "5";
+        private const string shest = "6";
+        private const string sem = "7";
+        private const string vosem = "8";
+        private const string devyat = "9";
         private MenuStrip menuCalc;
         private ToolStripMenuItem viewMenuItem1;
         private ToolStripMenuItem enginMenuItem2;
         private ToolStripMenuItem lightMenuItem3;
         private ToolStripMenuItem quesMenuItem4;
-        private Button btn_Kvadrat;
         public ToolTip toolTip1;
+        //private EventHandler txtOutput_TextChanged;
+        //private EventHandler btn_sbros_Click;
+        //private EventHandler btnChangesign_Click;
+        //private EventHandler btn2_Click;
+        //private EventHandler btn3_Click;
+        //private EventHandler btn4_Click;
+        //private EventHandler btn5_Click;
+        //private EventHandler btn6_Click;
+        //private EventHandler btn8_Click;
+        //private EventHandler btn9_Click;
+        //private EventHandler btn0_Click;
+        //private EventHandler btn_plus_Click;
+        //private EventHandler btnpoint_Click;
+        //private EventHandler btn_ravno_Click;
+        //private EventHandler btn_umnojenie_Click;
+        //private EventHandler btn_minus_Click;
+        //private EventHandler btn_delenie_Click;
+        //private EventHandler btn7_Click;
+        //private EventHandler btn1_Click;
+        //private PopupEventHandler toolTip1_Popup;
         private const string nul = "0";
 
-		public Calc()
-		{
-			InitializeComponent();
-			// ѕри запуске приложени€ на экране будет нуль
-			txt_Output.Text = "0";
-		
-		}
+        public EventHandler Stepen_Click { get; private set; }
+        public EventHandler Koren_Click { get; private set; }
+        public EventHandler Obratnoe_Click { get; private set; }
+        public EventHandler Close_Click { get; private set; }
+        public EventHandler Kvadrat_Click { get; private set; }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if (components != null) 
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        public Calc()
+        {
+            InitializeComponent();
+            // ѕри запуске приложени€ на экране будет нуль
+            txt_Output.Text = "0";
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
             this.txt_Output = new System.Windows.Forms.TextBox();
@@ -134,7 +160,7 @@ namespace Calculator
             this.txt_Output.Size = new System.Drawing.Size(300, 30);
             this.txt_Output.TabIndex = 60;
             this.txt_Output.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txt_Output.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
+            this.txt_Output.Click += new System.EventHandler(this.txt_Output_Click);
             // 
             // btn_sbros
             // 
@@ -144,7 +170,7 @@ namespace Calculator
             this.btn_sbros.Size = new System.Drawing.Size(48, 92);
             this.btn_sbros.TabIndex = 0;
             this.btn_sbros.Text = "C";
-            this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click);
+            this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click_1);
             // 
             // btn_Changesign
             // 
@@ -155,7 +181,7 @@ namespace Calculator
             this.btn_Changesign.Size = new System.Drawing.Size(48, 46);
             this.btn_Changesign.TabIndex = 58;
             this.btn_Changesign.Text = "+/-";
-            this.btn_Changesign.Click += new System.EventHandler(this.btnChangesign_Click);
+            this.btn_Changesign.Click += new System.EventHandler(this.btn_Changesign_Click_1);
             // 
             // btn_point
             // 
@@ -165,7 +191,7 @@ namespace Calculator
             this.btn_point.Size = new System.Drawing.Size(48, 46);
             this.btn_point.TabIndex = 57;
             this.btn_point.Text = ",";
-            this.btn_point.Click += new System.EventHandler(this.btnpoint_Click);
+            this.btn_point.Click += new System.EventHandler(this.btn_point_Click_1);
             // 
             // btn_ravno
             // 
@@ -176,7 +202,7 @@ namespace Calculator
             this.btn_ravno.Size = new System.Drawing.Size(48, 93);
             this.btn_ravno.TabIndex = 56;
             this.btn_ravno.Text = "=";
-            this.btn_ravno.Click += new System.EventHandler(this.btn_ravno_Click);
+            this.btn_ravno.Click += new System.EventHandler(this.btn_ravno_Click_1);
             // 
             // btn_delenie
             // 
@@ -186,7 +212,7 @@ namespace Calculator
             this.btn_delenie.Size = new System.Drawing.Size(48, 46);
             this.btn_delenie.TabIndex = 55;
             this.btn_delenie.Text = "/";
-            this.btn_delenie.Click += new System.EventHandler(this.btn_delenie_Click);
+            this.btn_delenie.Click += new System.EventHandler(this.btn_delenie_Click_1);
             // 
             // btn_umnojenie
             // 
@@ -196,7 +222,7 @@ namespace Calculator
             this.btn_umnojenie.Size = new System.Drawing.Size(48, 46);
             this.btn_umnojenie.TabIndex = 54;
             this.btn_umnojenie.Text = "*";
-            this.btn_umnojenie.Click += new System.EventHandler(this.btn_umnojenie_Click);
+            this.btn_umnojenie.Click += new System.EventHandler(this.btn_umnojenie_Click_1);
             // 
             // btn_plus
             // 
@@ -206,7 +232,7 @@ namespace Calculator
             this.btn_plus.Size = new System.Drawing.Size(48, 46);
             this.btn_plus.TabIndex = 53;
             this.btn_plus.Text = "+";
-            this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
+            this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click_1);
             // 
             // btn_minus
             // 
@@ -216,7 +242,7 @@ namespace Calculator
             this.btn_minus.Size = new System.Drawing.Size(48, 47);
             this.btn_minus.TabIndex = 52;
             this.btn_minus.Text = "-";
-            this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
+            this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click_1);
             // 
             // btn_0
             // 
@@ -226,7 +252,7 @@ namespace Calculator
             this.btn_0.Size = new System.Drawing.Size(48, 46);
             this.btn_0.TabIndex = 51;
             this.btn_0.Text = "0";
-            this.btn_0.Click += new System.EventHandler(this.btn0_Click);
+            this.btn_0.Click += new System.EventHandler(this.btn_0_Click_1);
             // 
             // btn_9
             // 
@@ -236,7 +262,7 @@ namespace Calculator
             this.btn_9.Size = new System.Drawing.Size(48, 46);
             this.btn_9.TabIndex = 50;
             this.btn_9.Text = "9";
-            this.btn_9.Click += new System.EventHandler(this.btn9_Click);
+            this.btn_9.Click += new System.EventHandler(this.btn_9_Click);
             // 
             // btn_8
             // 
@@ -246,7 +272,7 @@ namespace Calculator
             this.btn_8.Size = new System.Drawing.Size(48, 46);
             this.btn_8.TabIndex = 49;
             this.btn_8.Text = "8";
-            this.btn_8.Click += new System.EventHandler(this.btn8_Click);
+            this.btn_8.Click += new System.EventHandler(this.btn_8_Click);
             // 
             // btn_7
             // 
@@ -256,7 +282,7 @@ namespace Calculator
             this.btn_7.Size = new System.Drawing.Size(48, 46);
             this.btn_7.TabIndex = 48;
             this.btn_7.Text = "7";
-            this.btn_7.Click += new System.EventHandler(this.btn7_Click);
+            this.btn_7.Click += new System.EventHandler(this.btn_7_Click_1);
             // 
             // btn_6
             // 
@@ -266,7 +292,7 @@ namespace Calculator
             this.btn_6.Size = new System.Drawing.Size(48, 46);
             this.btn_6.TabIndex = 47;
             this.btn_6.Text = "6";
-            this.btn_6.Click += new System.EventHandler(this.btn6_Click);
+            this.btn_6.Click += new System.EventHandler(this.btn_6_Click);
             // 
             // btn_5
             // 
@@ -276,7 +302,7 @@ namespace Calculator
             this.btn_5.Size = new System.Drawing.Size(48, 46);
             this.btn_5.TabIndex = 46;
             this.btn_5.Text = "5";
-            this.btn_5.Click += new System.EventHandler(this.btn5_Click);
+            this.btn_5.Click += new System.EventHandler(this.btn_5_Click);
             // 
             // btn_4
             // 
@@ -286,7 +312,7 @@ namespace Calculator
             this.btn_4.Size = new System.Drawing.Size(48, 46);
             this.btn_4.TabIndex = 45;
             this.btn_4.Text = "4";
-            this.btn_4.Click += new System.EventHandler(this.btn4_Click);
+            this.btn_4.Click += new System.EventHandler(this.btn_4_Click);
             // 
             // btn_3
             // 
@@ -296,7 +322,7 @@ namespace Calculator
             this.btn_3.Size = new System.Drawing.Size(48, 47);
             this.btn_3.TabIndex = 44;
             this.btn_3.Text = "3";
-            this.btn_3.Click += new System.EventHandler(this.btn3_Click);
+            this.btn_3.Click += new System.EventHandler(this.btn_3_Click);
             // 
             // btn_2
             // 
@@ -306,7 +332,7 @@ namespace Calculator
             this.btn_2.Size = new System.Drawing.Size(48, 47);
             this.btn_2.TabIndex = 43;
             this.btn_2.Text = "2";
-            this.btn_2.Click += new System.EventHandler(this.btn2_Click);
+            this.btn_2.Click += new System.EventHandler(this.btn_2_Click);
             // 
             // btn_1
             // 
@@ -316,7 +342,7 @@ namespace Calculator
             this.btn_1.Size = new System.Drawing.Size(48, 47);
             this.btn_1.TabIndex = 42;
             this.btn_1.Text = "1";
-            this.btn_1.Click += new System.EventHandler(this.btn1_Click);
+            this.btn_1.Click += new System.EventHandler(this.btn_1_Click);
             // 
             // btn_Stepen
             // 
@@ -330,7 +356,7 @@ namespace Calculator
             this.btn_Stepen.TabIndex = 61;
             this.btn_Stepen.Text = "2^n";
             this.btn_Stepen.UseVisualStyleBackColor = false;
-            this.btn_Stepen.Click += new System.EventHandler(this.Stepen_Click);
+            this.btn_Stepen.Click += new System.EventHandler(this.btn_Stepen_Click);
             // 
             // btn_Koren
             // 
@@ -344,7 +370,7 @@ namespace Calculator
             this.btn_Koren.TabIndex = 62;
             this.btn_Koren.Text = "V";
             this.btn_Koren.UseVisualStyleBackColor = false;
-            this.btn_Koren.Click += new System.EventHandler(this.Koren_Click);
+            this.btn_Koren.Click += new System.EventHandler(this.btn_Koren_Click);
             // 
             // btn_Obratnoe
             // 
@@ -358,7 +384,7 @@ namespace Calculator
             this.btn_Obratnoe.TabIndex = 63;
             this.btn_Obratnoe.Text = "1/x";
             this.btn_Obratnoe.UseVisualStyleBackColor = false;
-            this.btn_Obratnoe.Click += new System.EventHandler(this.Obratnoe_Click);
+            this.btn_Obratnoe.Click += new System.EventHandler(this.btn_Obratnoe_Click);
             // 
             // btn_Close
             // 
@@ -372,7 +398,7 @@ namespace Calculator
             this.btn_Close.TabIndex = 64;
             this.btn_Close.Text = "«акрыть калькул€тор";
             this.btn_Close.UseVisualStyleBackColor = false;
-            this.btn_Close.Click += new System.EventHandler(this.Close_Click);
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // menuCalc
             // 
@@ -425,7 +451,7 @@ namespace Calculator
             this.btn_Kvadrat.TabIndex = 66;
             this.btn_Kvadrat.Text = "n^2";
             this.btn_Kvadrat.UseVisualStyleBackColor = false;
-            this.btn_Kvadrat.Click += new System.EventHandler(this.Kvadrat_Click);
+            this.btn_Kvadrat.Click += new System.EventHandler(this.btn_Kvadrat_Click);
             // 
             // toolTip1
             // 
@@ -433,7 +459,6 @@ namespace Calculator
             this.toolTip1.Tag = "Stepen";
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Stepen";
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Calc
             // 
@@ -481,154 +506,201 @@ namespace Calculator
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main() 
-		{
-			Application.Run(new Calc());
-		}
-		/// <summary>
-		/// ќбработчики дл€ кнопок  обращаютс€ к методу chislonaEkrane класса mehanizmcalkulyatora
-		/// и передают ему одну из посто€нных (odin, dva, tri  и т.д.). –езультат, возвращаемый методом,
-		/// присваиваетс€  свойству Text текстового пол€ txtOutput.
-		/// </summary>
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.Run(new Calc());
+        }
+        /// <summary>
+        /// ќбработчики дл€ кнопок  обращаютс€ к методу chislonaEkrane класса mehanizmcalkulyatora
+        /// и передают ему одну из посто€нных (odin, dva, tri  и т.д.). –езультат, возвращаемый методом,
+        /// присваиваетс€  свойству Text текстового пол€ txtOutput.
+        /// </summary>
 
-			private void btn1_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (odin);
-			}
+        private void btn_1_Click(object sender, System.EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(odin);
+        }
+        private void btn_7_Click_1(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(sem);
+        }
+        private void btn_6_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(shest);
+        }
 
-			private void btn2_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (dva);
-			}
+        private void btn_2_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(dva);
+        }
 
-			private void btn3_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (tri);
-			}
+        private void btn_9_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(devyat);
+        }
 
-			private void btn4_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (chetire);
-			}
+        private void btn_5_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(pyat);
+        }
 
-			private void btn5_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (pyat);
-			}
+        private void btn_8_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(vosem);
+        }
 
-			private void btn6_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (shest);
-			}
+        private void btn_4_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(chetire);
+        }
 
-			private void btn7_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (sem);
-			}
+        private void btn_3_Click(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(tri);
+        }
 
-			private void btn8_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (vosem);
-			}
+        private void btn_0_Click_1(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane(nul);
+        }
 
-			private void btn9_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (devyat);
-			}
 
-			private void btn0_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.chislonaEkrane (nul);
-			}
+        /// <summary>
+        /// ќбработчики кнопок действи€ калькул€тора передают 
+        /// методу DeystvieCalculatora класса mehanizmcalkulyatora переменную перечислени€ Deystvie.
+        /// </summary>
 
-			private void btnChangesign_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.ZnakChisla();
-			}
 
-			private void btnpoint_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.ZnakTochki();
-			}
-			/// <summary>
-			/// ќбработчики кнопок действи€ калькул€тора передают 
-			/// методу DeystvieCalculatora класса mehanizmcalkulyatora переменную перечислени€ Deystvie.
-			/// </summary>
-		
-			private void btn_delenie_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Delenie);
-			}
 
-			private void btn_umnojenie_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Umnojenie);
-			}
+        private void btn_plus_Click_1(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Slojenie);
+        }
 
-			private void btn_minus_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Vichitanie);
-			}
+        private void btn_minus_Click_1(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Vichitanie);
+        }
 
-			private void btn_plus_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Slojenie);
-			}
+        private void btn_umnojenie_Click_1(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Umnojenie);
+        }
 
-			private void btn_ravno_Click(object sender, System.EventArgs e)
-			{
-				txt_Output.Text = mehanizmcalkulyatora.ZnakRavno();
-				mehanizmcalkulyatora.Sbros();
-			}
+        private void btn_delenie_Click_1(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Delenie);
+        }
 
-			private void btn_sbros_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.Sbros();
-				txt_Output.Text = "0";
-			}
+ 
 
-        private void txtOutput_TextChanged(object sender, EventArgs e)
+        private void btn_sbros_Click_1(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.Sbros();
+            txt_Output.Text = "0";
+        }
+
+        private void btn_ravno_Click_1(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.ZnakRavno();
+            mehanizmcalkulyatora.Sbros();
+        }
+
+        private void txt_Output_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void Obratnoe_Click(object sender, EventArgs e)
-        {
-            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Obratnoe);
-        }
-
-        private void Kvadrat_Click(object sender, EventArgs e)
-        {
-            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Kvadrat);
-        }
-
-        private void Koren_Click(object sender, EventArgs e)
-        {
-            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Koren);
-        }
-
-        private void Stepen_Click(object sender, EventArgs e)
-        {
-            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Stepen);
-        }
-
-        private void Close_Click(object sender, EventArgs e)
+        private void btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        private void btn_Stepen_Click(object sender, EventArgs e)
         {
-
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Stepen);
         }
+
+        private void btn_Koren_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Koren);
+        }
+
+        private void btn_Obratnoe_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Obratnoe);
+        }
+
+        private void btn_Kvadrat_Click(object sender, EventArgs e)
+        {
+            mehanizmcalkulyatora.DeystvieCalculatora(mehanizmcalkulyatora.Deystvie.Kvadrat);
+        }
+
+
+        private void btn_Changesign_Click_1(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.ZnakChisla();
+        }
+
+        private void btn_point_Click_1(object sender, EventArgs e)
+        {
+            txt_Output.Text = mehanizmcalkulyatora.ZnakTochki();
+        }
+
+
     }
+    //public partial class engin : Calculator.Calc
+    //{
+    //    public engin()
+    //    {
+    //        InitializeComponent();
+    //    }
+
+    //private void Obratnoe_Click(object sender, EventArgs e)
+    //    {
+
+    //    }
+
+    //private void Kvadrat_Click(object sender, EventArgs e)
+    //    {
+
+    //    }
+
+    //private void Koren_Click(object sender, EventArgs e)
+    //{
+
+    //}
+
+    //private void Stepen_Click(object sender, EventArgs e)
+    //{
+
+    //}
+
+    //private void Close_Click(object sender, EventArgs e)
+    //{
+
+    //}
+
+    //private void toolTip1_Popup(object sender, PopupEventArgs e)
+    //{
+
+    //}
+    //}
+
+    //internal class InitializeComponent
+    //{
+    //    public InitializeComponent()
+    //    {
+    //    }
+    //}
+
     class mehanizmcalkulyatora
 	{
 	/// <summary>
